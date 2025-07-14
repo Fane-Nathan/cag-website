@@ -27,7 +27,7 @@ A modern, responsive website for the Cache-Augmented Generation (CAG) System fea
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/felixnathaniel/cag-website.git
+git clone https://github.com/Fane-nathan/cag-website.git
 cd cag-website
 ```
 
@@ -57,4 +57,4 @@ Can be deployed to Vercel, Netlify, GitHub Pages, or any static hosting service.
 
 Felix Nathaniel - felnat.surjo@gmail.com
 
-Project Link: https://github.com/felixnathaniel/cag-website
+Project Link: https://github.com/Fane-nathan/cag-website
