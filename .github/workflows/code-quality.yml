@@ -1,0 +1,46 @@
+name: Code Quality Checks
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run ESLint
+      run: npm run lint --if-present
+      continue-on-error: true
+      
+    - name: Run Prettier check
+      run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,md}" --ignore-unknown
+      continue-on-error: true
+      
+    - name: Check for security vulnerabilities
+      run: npm audit --audit-level moderate
+      continue-on-error: true
+      
+    - name: Build project
+      run: npm run build
+      
+    - name: Analyze bundle size
+      run: |
+        echo "Analyzing build output..."
+        find dist -name "*.js" -exec ls -lh {} \;
+        echo "Total build size:"
+        du -sh dist/
