@@ -250,7 +250,7 @@ function App() {
                   </h3>
                   <p>
                     <a
-                      href="https://github.com/felixnathaniel/cag-system"
+                      href="https://github.com/Fane-nathan/cag-system"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contact-link"
