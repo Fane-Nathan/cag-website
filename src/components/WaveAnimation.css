@@ -1,0 +1,18 @@
+/* src/components/WaveAnimation.css */
+
+.wave-animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 1; /* Bring it above background but below content */
+  pointer-events: none;
+}
+
+.wave-animation-container canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}

@@ -1,0 +1,105 @@
+/* src/components/Navbar.css */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The main selector is now 'nav' and it centers its content */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* This centers the nav items */
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  background: transparent;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+/* The navbar-brand styles have been removed */
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navbar-nav li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav button {
+  position: relative;
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.navbar-nav button:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav button.active {
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.navbar-nav button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #00d4ff;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.navbar-nav button:hover::after,
+.navbar-nav button.active::after {
+  width: 80%;
+}
+
+/* The responsive styles remain largely the same */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .navbar-nav {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .navbar-nav button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

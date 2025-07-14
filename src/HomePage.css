@@ -1,0 +1,571 @@
+/* src/pages/HomePage.css */
+
+/* General layout for all sections within App.jsx */
+.homepage-container {
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+  background: transparent;
+}
+
+.content-container section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box; 
+  padding: 2rem;
+  background: transparent;
+}
+
+/* This rule specifically styles your demo pages */
+.demo-container {
+  justify-content: flex-start; 
+  /* Increase this value to move the content lower */
+  align-items: center;
+  padding-top: 190px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Specific alignment for the #home section */
+#home {
+  align-items: flex-start; 
+  padding-left: 15%; 
+}
+
+#home h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #00d4ff, #0099cc);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#home .subtitle {
+  margin-bottom: 3rem;
+}
+
+/* Centering for other sections */
+#overview, #contact {
+  align-items: center;
+  text-align: center;
+}
+
+/* Styles for #home section cards and buttons */
+.feature-list {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  width: 240px;
+  min-height: 120px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  will-change: backdrop-filter;
+  contain: layout style paint;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: #00d4ff;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: linear-gradient(3deg, #00d4ff, #24ee50);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.cta-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: #fff; /* Ensure text is visible */
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+
+.cta-button.primary {
+  background: linear-gradient(45deg, #00d4ff, #0099cc);
+  color: #ffffff;
+}
+
+.cta-button.primary:hover {
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.cta-button.secondary {
+  color: #cccccc;
+  border: 1px solid #cccccc;
+}
+
+.cta-button.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #00d4ff;
+}
+
+/* Styles for #overview section */
+.overview-content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: justify;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Contact page intro text styling */
+.contact-intro {
+  text-align: center !important;
+  font-size: 1.3rem !important;
+  max-width: 800px !important;
+  margin: 0 auto 3rem auto !important;
+  line-height: 1.6 !important;
+  color: #e5e5e5 !important;
+  font-weight: 400 !important;
+}
+
+/* Override specific page headings to use blue gradient */
+#contact h2,
+#overview h2 {
+  background: linear-gradient(45deg, #00d4ff, #0099cc) !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Academic section styling - Glassmorphism */
+.academic-section {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  will-change: backdrop-filter;
+  contain: layout style paint;
+  overflow: hidden;
+}
+
+.academic-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 255, 255, 0.05));
+  border-radius: 12px;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.academic-section:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.academic-section h3 {
+  color: #00d4ff;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  padding-bottom: 0.5rem;
+  width: 100%;
+  text-align: left;
+}
+
+.academic-section p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+  text-align: justify;
+  hyphens: auto;
+  word-spacing: 0.1em;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.academic-section strong {
+  color: #fff;
+}
+
+.academic-section em {
+  color: #00d4ff;
+  font-style: italic;
+}
+
+/* Formula styling */
+.formula {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border-left: 4px solid #00d4ff;
+  font-family: 'Courier New', monospace;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formula code {
+  color: #fff;
+  font-size: 1.1rem;
+  background: none;
+}
+
+/* LaTeX Formula styling */
+.latex-formula {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  text-align: center;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-left: 4px solid #00d4ff;
+}
+
+.latex-formula .katex-display {
+  margin: 0;
+  color: #ffffff;
+}
+
+.latex-formula .katex {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+/* Inline math styling */
+.katex {
+  color: #00d4ff;
+  font-size: 1.05rem;
+}
+
+/* Metrics grid for performance section */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.metric-item {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+  text-align: justify;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.metric-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.metric-item h4 {
+  color: #fff;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.metric-item strong {
+  color: #00d4ff;
+  font-size: 1.1rem;
+}
+
+/* Research list styling */
+.research-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.research-list li {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  margin: 0.8rem 0;
+  border-radius: 16px;
+  border-left: 4px solid #00d4ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+  text-align: justify;
+  hyphens: auto;
+  word-spacing: 0.1em;
+  min-height: auto;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.6;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.research-list li:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(5px);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.research-list li strong {
+  color: #00d4ff;
+  display: inline;
+  margin-right: 0.5em;
+}
+
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  text-align: justify;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  border-color: #00d4ff;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(0, 0, 0, 0.5));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.feature-item h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* Styles for #contact section */
+.contact-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.contact-item {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  will-change: backdrop-filter;
+  contain: layout style paint;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.contact-item h3 {
+  color: #00d4ff;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-item code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #00d4ff;
+}
+
+/* Enhanced contact styling */
+.contact-link {
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.contact-link:hover {
+  color: #ffffff;
+  border-bottom: 1px solid #00d4ff;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.contact-description {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.additional-info {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.additional-info h3 {
+  color: #00d4ff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.quick-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quick-link {
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.quick-link:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
