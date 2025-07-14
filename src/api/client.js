@@ -18,12 +18,14 @@ class CAGApiClient {
 
     try {
       const response = await fetch(url, config);
-      
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        throw new Error(
+          errorData.detail || `HTTP error! status: ${response.status}`
+        );
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error(`API request failed: ${endpoint}`, error);
@@ -51,9 +53,16 @@ class CAGApiClient {
   }
 
   // Streaming CAG Analysis
-  async cagAnalysisStream(url, query, options = {}, onChunk = null, onComplete = null, onError = null) {
+  async cagAnalysisStream(
+    url,
+    query,
+    options = {},
+    onChunk = null,
+    onComplete = null,
+    onError = null
+  ) {
     const requestUrl = `${this.baseURL}/cag/stream`;
-    
+
     try {
       const response = await fetch(requestUrl, {
         method: 'POST',
@@ -79,20 +88,20 @@ class CAGApiClient {
 
       while (true) {
         const { done, value } = await reader.read();
-        
+
         if (done) break;
-        
+
         buffer += decoder.decode(value, { stream: true });
         const lines = buffer.split('\n');
-        
+
         // Keep the last incomplete line in buffer
         buffer = lines.pop() || '';
-        
+
         for (const line of lines) {
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.slice(6));
-              
+
               if (data.type === 'metadata' && onChunk) {
                 onChunk({ type: 'metadata', data });
               } else if (data.type === 'content' && onChunk) {

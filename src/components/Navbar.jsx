@@ -10,13 +10,13 @@ function Navbar({ activeSection, setActiveSection }) {
     { id: 'cag-demo', label: 'Sandbox' },
     { id: 'arxiv-demo', label: 'ArXiv Research' },
     { id: 'overview', label: 'Overview' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact' },
   ];
 
   return (
     <nav>
       <ul className="navbar-nav">
-        {navItems.map((item) => (
+        {navItems.map(item => (
           <li key={item.id}>
             <button
               onClick={() => setActiveSection(item.id)}

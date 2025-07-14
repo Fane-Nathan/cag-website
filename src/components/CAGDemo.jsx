@@ -4,19 +4,19 @@ import './CAGDemo.css';
 
 // Simple markdown renderer component
 const MarkdownRenderer = ({ content }) => {
-  const formatMarkdown = (text) => {
+  const formatMarkdown = text => {
     if (!text) return '';
-    
+
     // Pre-process: Split into lines for better list handling
     const lines = text.split('\n');
     let formatted = '';
     let inList = false;
     let listItems = [];
     let inCodeBlock = false;
-    
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
-      
+
       // Handle code blocks
       if (line.trim().startsWith('```')) {
         if (inCodeBlock) {
@@ -24,7 +24,10 @@ const MarkdownRenderer = ({ content }) => {
           inCodeBlock = false;
         } else {
           if (inList) {
-            formatted += '<ul>' + listItems.map(item => `<li>${item}</li>`).join('') + '</ul>';
+            formatted +=
+              '<ul>' +
+              listItems.map(item => `<li>${item}</li>`).join('') +
+              '</ul>';
             inList = false;
             listItems = [];
           }
@@ -33,12 +36,12 @@ const MarkdownRenderer = ({ content }) => {
         }
         continue;
       }
-      
+
       if (inCodeBlock) {
         formatted += line + '\n';
         continue;
       }
-      
+
       // Handle bullet points
       if (line.trim().match(/^[*-]\s+(.+)/)) {
         const content = line.trim().replace(/^[*-]\s+/, '');
@@ -49,12 +52,15 @@ const MarkdownRenderer = ({ content }) => {
         listItems.push(content);
         continue;
       }
-      
+
       // Handle numbered lists
       if (line.trim().match(/^\d+\.\s+(.+)/)) {
         const content = line.trim().replace(/^\d+\.\s+/, '');
         if (inList) {
-          formatted += '<ul>' + listItems.map(item => `<li>${item}</li>`).join('') + '</ul>';
+          formatted +=
+            '<ul>' +
+            listItems.map(item => `<li>${item}</li>`).join('') +
+            '</ul>';
           listItems = [];
         }
         if (!inList) {
@@ -64,14 +70,15 @@ const MarkdownRenderer = ({ content }) => {
         listItems.push(`<li class="numbered">${content}</li>`);
         continue;
       }
-      
+
       // End list if we hit a non-list line
       if (inList && line.trim() !== '') {
-        formatted += '<ul>' + listItems.map(item => `<li>${item}</li>`).join('') + '</ul>';
+        formatted +=
+          '<ul>' + listItems.map(item => `<li>${item}</li>`).join('') + '</ul>';
         inList = false;
         listItems = [];
       }
-      
+
       // Handle headers
       if (line.trim().match(/^###\s+(.+)/)) {
         formatted += `<h3>${line.trim().replace(/^###\s+/, '')}</h3>`;
@@ -85,18 +92,19 @@ const MarkdownRenderer = ({ content }) => {
         formatted += `<h1>${line.trim().replace(/^#\s+/, '')}</h1>`;
         continue;
       }
-      
+
       // Handle regular paragraphs
       if (line.trim() !== '') {
         formatted += `<p>${line.trim()}</p>`;
       }
     }
-    
+
     // Close any remaining list
     if (inList) {
-      formatted += '<ul>' + listItems.map(item => `<li>${item}</li>`).join('') + '</ul>';
+      formatted +=
+        '<ul>' + listItems.map(item => `<li>${item}</li>`).join('') + '</ul>';
     }
-    
+
     // Post-process for inline formatting
     formatted = formatted
       // Bold text
@@ -107,12 +115,12 @@ const MarkdownRenderer = ({ content }) => {
       .replace(/_([^_]+)_/g, '<em>$1</em>')
       // Inline code
       .replace(/`([^`]+)`/g, '<code>$1</code>');
-    
+
     return formatted;
   };
 
   return (
-    <div 
+    <div
       className="markdown-content"
       dangerouslySetInnerHTML={{ __html: formatMarkdown(content) }}
     />
@@ -153,10 +161,10 @@ function CAGDemo() {
       const responseLength = result.response?.length || 0;
       const urlLength = result.url?.length || 0;
       const totalContentLength = responseLength + urlLength;
-      
+
       // Remove existing content-based classes
       demoRef.current.classList.remove('has-long-content', 'has-short-content');
-      
+
       // Add appropriate class based on content length
       if (totalContentLength > 1000) {
         demoRef.current.classList.add('has-long-content');
@@ -166,7 +174,7 @@ function CAGDemo() {
     }
   }, [result]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!url.trim() || !query.trim()) {
       setError('Please provide both URL and query');
@@ -185,20 +193,20 @@ function CAGDemo() {
       response: '',
       crawl_cached: false,
       llm_cached: false,
-      processing_time: 0
+      processing_time: 0,
     };
 
     try {
       console.log('Making CAG request:', { url, query, useCache });
-      
+
       // Try streaming first, fallback to regular request
       try {
         await apiClient.cagAnalysisStream(
-          url, 
-          query, 
+          url,
+          query,
           { useCache, includeHistory: false },
           // onChunk callback
-          (chunk) => {
+          chunk => {
             if (chunk.type === 'metadata') {
               streamingResult = { ...streamingResult, ...chunk.data };
               setResult({ ...streamingResult });
@@ -210,7 +218,7 @@ function CAGDemo() {
             }
           },
           // onComplete callback
-          (completion) => {
+          completion => {
             console.log('Streaming completed:', completion);
             streamingResult.processing_time = completion.processing_time;
             streamingResult.llm_cached = completion.cached;
@@ -219,21 +227,24 @@ function CAGDemo() {
             setLoading(false);
           },
           // onError callback
-          (error) => {
-            console.error('Streaming failed, falling back to regular request:', error);
+          error => {
+            console.error(
+              'Streaming failed, falling back to regular request:',
+              error
+            );
             throw error; // This will trigger the fallback
           }
         );
       } catch {
         console.log('Streaming not available, using regular CAG request');
         setIsStreaming(false);
-        
+
         // Fallback to regular CAG request
         const response = await apiClient.cagAnalysis(url, query, {
           useCache,
           includeHistory: false,
         });
-        
+
         console.log('CAG response:', response);
         setResult(response);
         setLoading(false);
@@ -249,15 +260,15 @@ function CAGDemo() {
   const exampleQueries = [
     {
       url: 'https://en.wikipedia.org/wiki/Artificial_intelligence',
-      query: 'What are the main applications of artificial intelligence?'
+      query: 'What are the main applications of artificial intelligence?',
     },
     {
       url: 'https://openai.com/blog/chatgpt',
-      query: 'How does ChatGPT work and what are its capabilities?'
-    }
+      query: 'How does ChatGPT work and what are its capabilities?',
+    },
   ];
 
-  const loadExample = (example) => {
+  const loadExample = example => {
     setUrl(example.url);
     setQuery(example.query);
   };
@@ -277,8 +288,9 @@ function CAGDemo() {
               </span>
             </div>
             <p className="demo-description">
-              Enter a URL and ask a question about its content. Our Cache-Augmented Generation system 
-              will crawl the website and provide intelligent answers based on the content.
+              Enter a URL and ask a question about its content. Our
+              Cache-Augmented Generation system will crawl the website and
+              provide intelligent answers based on the content.
             </p>
           </div>
 
@@ -289,7 +301,7 @@ function CAGDemo() {
                 type="url"
                 id="url"
                 value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={e => setUrl(e.target.value)}
                 placeholder="https://example.com"
                 required
               />
@@ -300,7 +312,7 @@ function CAGDemo() {
               <textarea
                 id="query"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={e => setQuery(e.target.value)}
                 placeholder="What would you like to know about this website's content?"
                 rows="3"
                 required
@@ -312,7 +324,7 @@ function CAGDemo() {
                 <input
                   type="checkbox"
                   checked={useCache}
-                  onChange={(e) => setUseCache(e.target.checked)}
+                  onChange={e => setUseCache(e.target.checked)}
                 />
                 Use caching for faster responses
               </label>
@@ -334,27 +346,43 @@ function CAGDemo() {
                 <span className="icon">🔗</span>
                 <span className="label">URL:</span>
                 <span className="value">
-                  <a href={result.url} target="_blank" rel="noopener noreferrer">{result.url}</a>
+                  <a
+                    href={result.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {result.url}
+                  </a>
                 </span>
               </div>
-              
+
               <div className="metadata-item">
                 <span className="icon">⚡</span>
                 <span className="label">Processing Time:</span>
-                <span className="value processing-time">{result.processing_time?.toFixed(2)}s</span>
+                <span className="value processing-time">
+                  {result.processing_time?.toFixed(2)}s
+                </span>
               </div>
-              
+
               <div className="metadata-item">
                 <span className="icon">💾</span>
                 <span className="label">Cache Status:</span>
                 <span className="value">
-                  <span className={`cache-badge ${result.crawl_cached ? 'cached' : 'not-cached'}`}>
-                    <span className="badge-icon">{result.crawl_cached ? '✓' : '✗'}</span>
+                  <span
+                    className={`cache-badge ${result.crawl_cached ? 'cached' : 'not-cached'}`}
+                  >
+                    <span className="badge-icon">
+                      {result.crawl_cached ? '✓' : '✗'}
+                    </span>
                     Crawl
                   </span>
                   {' | '}
-                  <span className={`cache-badge ${result.llm_cached ? 'cached' : 'not-cached'}`}>
-                    <span className="badge-icon">{result.llm_cached ? '✓' : '✗'}</span>
+                  <span
+                    className={`cache-badge ${result.llm_cached ? 'cached' : 'not-cached'}`}
+                  >
+                    <span className="badge-icon">
+                      {result.llm_cached ? '✓' : '✗'}
+                    </span>
                     LLM
                   </span>
                 </span>
@@ -393,13 +421,17 @@ function CAGDemo() {
           </div>
 
           <div className="analyze-section">
-            <button 
-              type="submit" 
-              form="cag-form" 
-              disabled={loading} 
+            <button
+              type="submit"
+              form="cag-form"
+              disabled={loading}
               className={`submit-button analyze-button ${isStreaming ? 'streaming' : ''}`}
             >
-              {loading ? (isStreaming ? 'Streaming...' : 'Analyzing...') : 'Analyze Website'}
+              {loading
+                ? isStreaming
+                  ? 'Streaming...'
+                  : 'Analyzing...'
+                : 'Analyze Website'}
             </button>
           </div>
         </div>

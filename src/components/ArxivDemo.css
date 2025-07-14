@@ -25,7 +25,9 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   width: 100%;
   box-sizing: border-box;
@@ -41,7 +43,9 @@
   border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* Right column - Categories and Search Button */
@@ -63,7 +67,9 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   width: 100%;
   box-sizing: border-box;
@@ -77,7 +83,9 @@
   border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .arxiv-demo h2 {
@@ -232,7 +240,9 @@
   border: 1px solid rgba(255, 107, 107, 0.3);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   width: 100%;
   box-sizing: border-box;
@@ -270,7 +280,9 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   width: 100%;
   box-sizing: border-box;
@@ -286,7 +298,9 @@
   border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .paper-title {
@@ -395,19 +409,19 @@
     padding: 1rem;
     margin: 1rem;
   }
-  
+
   .tabs {
     flex-direction: column;
   }
-  
+
   .form-row {
     flex-direction: column;
   }
-  
+
   .paper-actions {
     justify-content: center;
   }
-  
+
   .analysis-meta {
     flex-direction: column;
     gap: 0.5rem;
@@ -416,7 +430,8 @@
 /* Beautiful ArXiv Demo Styling - Matching CAG Sandbox */
 
 /* Form styling */
-.search-form, .analysis-form {
+.search-form,
+.analysis-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -510,7 +525,11 @@
   width: 100%;
   margin-bottom: 0.5rem;
   padding: 0.75rem 1rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.06)
+  );
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   color: #e5e5e5;
@@ -528,13 +547,18 @@
 }
 
 .example-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 107, 107, 0.1),
+    transparent
+  );
   transition: left 0.6s ease;
 }
 
@@ -543,7 +567,11 @@
 }
 
 .example-button:hover {
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 107, 107, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 107, 0.15),
+    rgba(255, 107, 107, 0.05)
+  );
   border-color: #ff6b6b;
   color: #fff;
   transform: translateY(-2px);
@@ -557,7 +585,7 @@
 
 /* Add icon to example buttons */
 .example-button::after {
-  content: "→";
+  content: '→';
   position: absolute;
   right: 1.5rem;
   top: 50%;
@@ -601,7 +629,7 @@
     gap: 1.5rem;
     max-width: min(95vw, 1300px);
   }
-  
+
   .arxiv-demo-right {
     min-width: 260px;
     max-width: 320px;
@@ -615,20 +643,20 @@
     margin: 1rem;
     max-width: 95vw;
   }
-  
+
   .search-form-box,
   .categories-search-box {
     padding: 1.5rem;
   }
-  
+
   .arxiv-demo h2 {
     font-size: 2rem;
   }
-  
+
   .arxiv-demo-right {
     order: -1;
   }
-  
+
   .tab-container {
     flex-direction: column;
   }
@@ -760,17 +788,17 @@
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .results-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .results-info {
     align-items: flex-start;
   }
-  
+
   .load-more-button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -812,7 +840,7 @@
 
 .metadata-value {
   color: #e5e5e5;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   background: rgba(255, 255, 255, 0.05);
   padding: 0.15rem 0.4rem;
   border-radius: 3px;
@@ -835,7 +863,11 @@
   display: inline-flex;
   align-items: center;
   padding: 0.2rem 0.5rem;
-  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(238, 90, 36, 0.2));
+  background: linear-gradient(
+    45deg,
+    rgba(255, 107, 107, 0.2),
+    rgba(238, 90, 36, 0.2)
+  );
   color: #ff6b6b;
   border: 1px solid rgba(255, 107, 107, 0.3);
   border-radius: 10px;
@@ -848,7 +880,11 @@
 }
 
 .category-tag:hover {
-  background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(238, 90, 36, 0.3));
+  background: linear-gradient(
+    45deg,
+    rgba(255, 107, 107, 0.3),
+    rgba(238, 90, 36, 0.3)
+  );
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
 }
@@ -868,7 +904,7 @@
 }
 
 .paper-card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -955,26 +991,26 @@
     gap: 0.5rem;
     padding: 0.75rem;
   }
-  
+
   .metadata-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.3rem;
   }
-  
+
   .metadata-label {
     min-width: auto;
   }
-  
+
   .categories-list {
     margin-top: 0.25rem;
   }
-  
+
   .paper-actions {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .pdf-link,
   .analyze-paper-btn {
     width: 100%;
@@ -1049,7 +1085,7 @@
   color: #ff6b6b;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   font-size: 0.9rem;
 }
 
@@ -1088,7 +1124,7 @@
 }
 
 .analysis-text .markdown-content ul li::before {
-  content: "●";
+  content: '●';
   color: #ff6b6b;
   font-weight: bold;
   position: absolute;
