@@ -27,6 +27,9 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
+    - name: Clean ESLint cache
+      run: rm -f .eslintcache
+      
     - name: Run linting
       run: npm run lint --if-present
       
