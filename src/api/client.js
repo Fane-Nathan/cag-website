@@ -102,7 +102,7 @@ class CAGApiClient {
               } else if (data.type === 'error' && onError) {
                 onError(new Error(data.error));
               }
-            } catch (e) {
+            } catch {
               console.warn('Failed to parse streaming data:', line);
             }
           }

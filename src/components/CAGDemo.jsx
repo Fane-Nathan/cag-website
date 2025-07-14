@@ -40,8 +40,8 @@ const MarkdownRenderer = ({ content }) => {
       }
       
       // Handle bullet points
-      if (line.trim().match(/^[\*\-]\s+(.+)/)) {
-        const content = line.trim().replace(/^[\*\-]\s+/, '');
+      if (line.trim().match(/^[*-]\s+(.+)/)) {
+        const content = line.trim().replace(/^[*-]\s+/, '');
         if (!inList) {
           inList = true;
           listItems = [];
@@ -224,7 +224,7 @@ function CAGDemo() {
             throw error; // This will trigger the fallback
           }
         );
-      } catch (streamError) {
+      } catch {
         console.log('Streaming not available, using regular CAG request');
         setIsStreaming(false);
         

@@ -147,7 +147,7 @@ function ArxivDemo() {
   };
 
   const extractArxivId = (url) => {
-    const match = url.match(/arxiv\.org\/abs\/([^\/\s]+)/);
+    const match = url.match(/arxiv\.org\/abs\/([^/\s]+)/);
     return match ? match[1] : url;
   };
 
